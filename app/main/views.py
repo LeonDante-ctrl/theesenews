@@ -9,7 +9,7 @@ def index():
     title = "Welcome to my news hub"
     return render_template('index.html', title= title, current_news = current_news )
 @main.route("/news/<news_id>")
-def articles(news_id):
+def articles(news_id): #codecamp 
     articles = get_articles(news_id)
     print(articles)
     title = f'{news_id}'
