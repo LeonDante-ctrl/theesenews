@@ -1,0 +1,3 @@
+export NEWS_API_KEY=695a759ca73b4d868c395d97269e50f6
+export SECRET_KEY=Dante
+python3.9 manage.py server
