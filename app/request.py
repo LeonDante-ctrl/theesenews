@@ -71,4 +71,4 @@ def process_articles(articles_list):
             articles_object = Articles(
                     title, author, description, url, urlToImage, publishedAt, content )
             articles_results.append(articles_object)
-    return  articles_results
+            return  articles_results
