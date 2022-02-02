@@ -1,6 +1,6 @@
 from ..request import get_news,get_articles
 from flask import render_template,request,redirect,url_for
-from . import main
+import main
 #Views
 @main.route('/')
 def index():
@@ -14,3 +14,4 @@ def articles(news_id): #codecamp
     print(articles)
     title = f'{news_id}'
     return render_template("articles.html", articles = articles, title = title)
+
