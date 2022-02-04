@@ -9,7 +9,7 @@ def index():
     """
     current_news = get_news()
     print(current_news)
-    title = "Welcome to the Best News Website for latest and current news"
+    title = "Welcome to Dante's news"
     return render_template('index.html', title= title, current_news = current_news )
 @main.route("/news/<news_id>")
 def articles(news_id):
