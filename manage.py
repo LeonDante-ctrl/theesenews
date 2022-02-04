@@ -1,3 +1,4 @@
+from distutils.log import debug
 from app import create_app
 from flask_script import Manager,Server
 import unittest
@@ -14,4 +15,4 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 
 if __name__ == '__main__':
-    manager.run()
+    manager.run(debug=True)
