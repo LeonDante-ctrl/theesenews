@@ -1,4 +1,5 @@
-from ..request import get_articles , get_news
+from importlib import import_module
+from ..request import yeet
 from flask import render_template,request,redirect,url_for
 from . import main
 #Views

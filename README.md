@@ -7,7 +7,7 @@
 
 ### Description
 
-This is a news app that presents to you latest updates on all thats around you from varioud sources and once interacted with the particular article , it expounds.
+This is a news app that presents to you latest updates on all thats around you from various sources and once interacted with the particular article , it expounds.
 
 ## Technologies Used Here
 

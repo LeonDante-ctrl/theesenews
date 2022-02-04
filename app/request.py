@@ -1,17 +1,21 @@
 import urllib.request, json
 from models import News, Articles
+
 #Getting api_key
 api_key = None
 #Getting the news base_url
 base_url = None
 #getting articles_base_url
 articles_base_url = None
-def configure_request(app):
+
+class yeet:
+
+ def configure_request(app):
     global api_key, base_url, articles_base_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
     articles_base_url = app.config['ARTICLES_BASE_URL']
-def get_news():
+ def get_news():
     """
     Function that gets the json response to our url request
     """
@@ -24,6 +28,19 @@ def get_news():
             news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
     return news_results
+ def get_articles(id):
+     """
+     Function that gets the json response for our url request
+     """
+     get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=695a759ca73b4d868c395d97269e50f6'.format(id)
+     with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+        articles_results = None
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
+     return articles_results
 def process_results(news_list):
     """
     Function that process the news result and transform them to list of objects
@@ -44,19 +61,7 @@ def process_results(news_list):
                 news_object = News(id, name,  description, url, category, country )
                 news_results.append(news_object)
     return news_results
-def get_articles(id):
-    """
-    Function that gets the json response for our url request
-    """
-    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=a6c5c1049c834e5c81000fc6a5bddebc'.format(id)
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_data = url.read()
-        get_articles_response = json.loads(get_articles_data)
-        articles_results = None
-        if get_articles_response['articles']:
-            articles_results_list = get_articles_response['articles']
-            articles_results = process_articles(articles_results_list)
-    return articles_results
+
 def process_articles(articles_list):
     """
     Function that process news result and transform them to a list of objects
